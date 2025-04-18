@@ -3,6 +3,7 @@
 slib_syscall:
 	push %rbp
 	movq %rsp, %rbp
+	movq %rcx, %r10 # XXX: kernel arg passing in syscall is diff
 	movq 16(%rbp), %rax
 	syscall
 	popq %rbp
