@@ -1,0 +1,1 @@
+#define ENOSUPPORT -100
