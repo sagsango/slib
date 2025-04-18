@@ -1,1 +1,1 @@
-small c libary like glibc/musl, for fun!
+small C library like glibc/musl, for fun!
