@@ -5,11 +5,11 @@ OBJ_DIR := ../build
 TEST_DIR := $(OBJ_DIR)/test
 
 CC := gcc
-CFLAGS := -Wall -Wextra -nostdlib -ffreestanding -fno-builtin -I$(INCLUDE_DIR)
+CFLAGS := -g3 -Wall -Wextra -nostdlib -ffreestanding -fno-builtin -I$(INCLUDE_DIR)
 LDFLAGS := -L$(LIB_DIR) -lslib -Wl,-rpath=$(abspath $(LIB_DIR))
 
 # Test-specific source files
-TEST_SRCS := write.c fork.c exec.c
+TEST_SRCS := write.c fork.c exec.c string.c io.c
 TEST_OBJS := $(patsubst %.c,$(TEST_DIR)/test_%.o,$(TEST_SRCS))
 TEST_EXECS := $(patsubst %.c,$(TEST_DIR)/%_test,$(TEST_SRCS))
 

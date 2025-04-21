@@ -4,7 +4,7 @@ OBJ_DIR := build
 
 CC := gcc
 AS := as
-CFLAGS := -Wall -Wextra -nostdlib -ffreestanding -fno-builtin -fPIC -I$(INCLUDE_DIR)
+CFLAGS := -g3 -Wall -Wextra -nostdlib -ffreestanding -fno-builtin -fPIC -I$(INCLUDE_DIR)
 ASFLAGS := 
 LDFLAGS := -shared
 
@@ -12,7 +12,7 @@ LDFLAGS := -shared
 $(shell mkdir -p $(OBJ_DIR))
 
 # Source files
-OBJS := $(OBJ_DIR)/syscall.o $(OBJ_DIR)/ams.o
+OBJS := $(OBJ_DIR)/syscall.o $(OBJ_DIR)/ams.o $(OBJ_DIR)/string.o $(OBJ_DIR)/io.o
 
 # Targets
 all: $(OBJ_DIR)/libslib.so
@@ -22,6 +22,12 @@ $(OBJ_DIR)/syscall.o: $(SRC_DIR)/syscall.c
 
 $(OBJ_DIR)/ams.o: $(SRC_DIR)/asm.s
 	$(AS) $(ASFLAGS) $< -o $@
+
+$(OBJ_DIR)/string.o: $(SRC_DIR)/string.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_DIR)/io.o: $(SRC_DIR)/io.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)/libslib.so: $(OBJS)
 	$(CC) $(LDFLAGS) $^ -o $@
