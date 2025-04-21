@@ -16,7 +16,7 @@ int slib_close(const int fd);
 int slib_fork();
 
 /* 0x3b */
-int slib_execve(const char *filename, const char * const *argv, const char *const envp);
+int slib_exec(const char *filename, const char * const *argv, const char *const *envp);
 int slib_exit(const int error_code);
 
 /*
